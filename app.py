@@ -8,6 +8,7 @@ def home():
 
 @app.route('/interfaces')
 def interfaces():
+    newDic = {}
     interfaces = {}
 
     with open('interfaces.txt', 'rt') as file:
@@ -22,7 +23,9 @@ def interfaces():
 
             interfaces[linky[0]] = conv
 
-    res = make_response(jsonify(interfaces), 200)
+    newDic["Computer Interfaces"] = interfaces
+
+    res = make_response(jsonify(newDic), 200)
     return res
 
 if __name__ == '__main__':
