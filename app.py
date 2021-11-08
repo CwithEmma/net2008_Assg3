@@ -28,6 +28,13 @@ def interfaces():
     res = make_response(jsonify(newDic), 200)
     return res
 
+@app.route('/iproutes')
+def iproutes():
+
+
+    return 'ip routes'
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
 
