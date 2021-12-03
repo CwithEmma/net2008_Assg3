@@ -1,0 +1,26 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      env: 
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_SECRET: ${{secrets.DOCKER_SECRETS}}
+        
+    - name: build docker image
+      run: docker build . --file Dockerfile --tag net2008-ass4/test:$(date +%s)
+      
+    - name: docker push 
+      run: docker push ${{secrets.DOCKER_USER}}/ass4
