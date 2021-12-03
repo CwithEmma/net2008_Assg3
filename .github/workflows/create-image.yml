@@ -22,7 +22,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_SECRET
         
     - name: build docker image
-      run: docker build . --file Dockerfile --tag net2008-ass4/test:$(date +%s)
+      run: docker build . --file Dockerfile --tag assign4/test:$(date +%s)
       
     - name: docker push 
-      run: docker push ${{secrets.DOCKER_USER}}/net2008_assg3
+      run: docker push ${{secrets.DOCKER_USER}}cwithemma/assign4
