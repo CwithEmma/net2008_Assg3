@@ -3,8 +3,8 @@ from flask import Flask, jsonify, make_response
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    return 'Home Page'
+def home(): 
+    return 'Not the Home Page'
 
 @app.route('/interfaces')
 def interfaces():
