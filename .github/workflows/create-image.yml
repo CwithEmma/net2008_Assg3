@@ -17,7 +17,9 @@ jobs:
     - name: Build the Docker image
       env: 
         DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_SECRET: ${{secrets.DOCKER_SECRETS}}
+        DOCKER_SECRET: ${{secrets.DOCKER_SECRET}}
+      run:
+        docker login -u $DOCKER_USER -p $DOCKER_SECRET
         
     - name: build docker image
       run: docker build . --file Dockerfile --tag net2008-ass4/test:$(date +%s)
