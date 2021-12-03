@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home(): 
-    return 'Not the Home Page'
+    return 'Home Page'
 
 @app.route('/interfaces')
 def interfaces():
