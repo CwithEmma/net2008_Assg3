@@ -25,4 +25,4 @@ jobs:
       run: docker build . --file Dockerfile --tag cwithemma/testapp:$(date +%s)
       
     - name: docker push 
-      run: docker push ${{secrets.DOCKER_USER}}/testapp
+      run: docker push ${{secrets.DOCKER_USER}}/assign4
