@@ -22,7 +22,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_SECRET
         
     - name: build docker image
-      run: docker build . --file Dockerfile --tag assign4/test:$(date +%s)
+      run: docker build . --file Dockerfile --tag cwithemma/testapp:$(date +%s)
       
     - name: docker push 
-      run: docker push ${{secrets.DOCKER_USER}}/assign4
+      run: docker push ${{secrets.DOCKER_USER}}/testapp
