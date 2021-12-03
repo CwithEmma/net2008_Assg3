@@ -25,4 +25,4 @@ jobs:
       run: docker build . --file Dockerfile --tag net2008-ass4/test:$(date +%s)
       
     - name: docker push 
-      run: docker push ${{secrets.DOCKER_USER}}/YOUR_DOCKER_HUB_REPO_NAME
+      run: docker push ${{secrets.DOCKER_USER}}/repo1
