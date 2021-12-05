@@ -1,0 +1,46 @@
+---
+- name: Playbook for part 5
+  hosts: localhost
+  tasks:
+
+    - name: Create a directory if it does not exist
+      become: yes
+      ansible.builtin.file:
+        path: ./Assignment4CodeBase
+        state: directory
+        mode: '0755'
+
+    - name: Checkout the remote repo
+      become: yes
+      ansible.builtin.git:
+        repo: https://github.com/gourteacher/Assignment4CodeBase.git
+        clone: yes
+        dest: ./Assignment4CodeBase
+
+    - name: Installing requirements
+      become: yes
+      apt:
+        pkg:
+          - python3
+          - python3-pip
+
+    - name: Installing requirements from Document
+      ansible.builtin.pip:
+        requirements: /mnt/c/users/elgmc/Documents/net2008_Assg3/Assignment4CodeBase/requirements.txt
+
+    - name: async running app.py
+      ansible.builtin.command: python3 /mnt/c/users/elgmc/Documents/net2008_Assg3/Assignment4CodeBase/app.py
+      async: 30
+      poll: 0
+
+    - name: wait for app to start
+      pause:
+        seconds: 10
+      
+    - name: Deploying command
+      command: curl localhost:5000/interfaces
+      register: curl_output
+    
+    - name: print output
+      debug:
+        msg: "{{ curl_output }}"
